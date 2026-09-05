@@ -1,808 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vishant Sarraf | Biomedical Engineering Portfolio</title>
-  <meta name="description" content="Portfolio of Vishant Sarraf - Biomedical Engineering Undergraduate specializing in Instrumentation, Analog Prototyping, and Computational Modeling." />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manish Kumar Mandal - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+   <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <style>
-    :root {
-      --bg-primary: #0a0f1d;
-      --bg-secondary: #111827;
-      --bg-card: #162032;
-      --bg-card-hover: #1e2c45;
-      --text-main: #f3f4f6;
-      --text-muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.15);
-      --border: #223249;
-      --tag-bg: rgba(56, 189, 248, 0.1);
-      --tag-text: #38bdf8;
-    }
-
-    [data-theme="light"] {
-      --bg-primary: #f8fafc;
-      --bg-secondary: #ffffff;
-      --bg-card: #f1f5f9;
-      --bg-card-hover: #e2e8f0;
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --accent: #0284c7;
-      --accent-glow: rgba(2, 132, 199, 0.12);
-      --border: #cbd5e1;
-      --tag-bg: rgba(2, 132, 199, 0.1);
-      --tag-text: #0284c7;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-primary);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding-top: 70px;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 70px;
-      background: rgba(10, 15, 29, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-    }
-
-    [data-theme="light"] .navbar {
-      background: rgba(248, 250, 252, 0.85);
-    }
-
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-    }
-
-    .nav-logo {
-      font-weight: 700;
-      font-size: 1.15rem;
-      letter-spacing: -0.5px;
-      color: var(--text-main);
-      text-decoration: none;
-    }
-
-    .nav-logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      border-radius: 8px;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--accent);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 90px 0 60px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      font-size: 0.82rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .hero-badge .pulse {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
-      animation: pulse-ring 1.8s infinite;
-    }
-
-    @keyframes pulse-ring {
-      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
-      70% { box-shadow: 0 0 0 9px rgba(56, 189, 248, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 680px;
-      margin-bottom: 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 22px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #0a0f1d;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.1);
-    }
-
-    .btn-secondary {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-    }
-
-    .btn-secondary:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--accent);
-    }
-
-    /* Section Styling */
-    section {
-      padding: 70px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .section-head {
-      margin-bottom: 40px;
-    }
-
-    .section-head h2 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-head h2 i {
-      color: var(--accent);
-    }
-
-    .section-head p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-top: 4px;
-    }
-
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 22px;
-    }
-
-    .skill-card:hover {
-      border-color: var(--accent);
-      background: var(--bg-card-hover);
-    }
-
-    .skill-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-    }
-
-    .tag-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .tag {
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      font-size: 0.78rem;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* Projects Grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-    }
-
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .project-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 8px 30px var(--accent-glow);
-    }
-
-    .project-status {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-
-    .status-completed { color: #34d399; }
-    .status-progress { color: #fbbf24; }
-
-    .project-card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-
-    .project-card ul {
-      padding-left: 18px;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      margin-bottom: 20px;
-    }
-
-    .project-card li {
-      margin-bottom: 8px;
-    }
-
-    /* Timeline (Education & Experience) */
-    .timeline {
-      position: relative;
-      border-left: 2px solid var(--border);
-      margin-left: 16px;
-      padding-left: 24px;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 36px;
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -31px;
-      top: 4px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg-primary);
-    }
-
-    .timeline-date {
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .timeline-item h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .timeline-sub {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-
-    .timeline-item ul {
-      padding-left: 18px;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-    }
-
-    .timeline-item li {
-      margin-bottom: 6px;
-    }
-
-    /* Two Column Split */
-    .split-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-    }
-
-    /* List Card */
-    .list-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    .list-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .list-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .list-item:first-child {
-      padding-top: 0;
-    }
-
-    .list-item i {
-      color: var(--accent);
-    }
-
-    .list-item-title {
-      font-weight: 600;
-      font-size: 0.92rem;
-    }
-
-    .list-item-sub {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
-
-    /* Contact Banner */
-    .contact-banner {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
-      text-align: center;
-    }
-
-    .contact-banner h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .contact-banner p {
-      color: var(--text-muted);
-      max-width: 540px;
-      margin: 0 auto 24px;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    footer {
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.2rem; }
-      .split-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-    }
-  </style>
 </head>
-<body>
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold bg-gradient-text">
+                    Manish Kumar Mandal
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active" data-section="home">Home</a>
+                    <a href="#about" class="nav-link" data-section="about">About</a>
+                    <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <header class="navbar">
-    <div class="container nav-content">
-      <a href="#" class="nav-logo">VS<span>.bio</span></a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-        <i data-lucide="moon" id="themeIcon"></i>
-      </button>
-    </div>
-  </header>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0" id="bg-particles"></div>
 
-  <main class="container">
-    <section class="hero" id="about">
-      <div class="hero-badge">
-        <span class="pulse"></span> Open to Biomedical Internships (Summer 2026)
-      </div>
-      <h1>Hi, I'm <span>Vishant Sarraf</span></h1>
-      <p>
-        Biomedical Engineering undergraduate at SRM IST focused on analog front-end prototyping, bio-transducer calibration, and physiological signal conditioning through MATLAB modeling.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">
-          <i data-lucide="cpu"></i> View Engineering Projects
-        </a>
-        <a href="mailto:vs2207@srmist.edu.in" class="btn btn-secondary">
-          <i data-lucide="mail"></i> Get In Touch
-        </a>
-      </div>
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="hero-content flex flex-col lg:flex-row items-center justify-between gap-12">
+                <!-- Text Content -->
+                <div class="flex-1 space-y-6 text-center lg:text-left">
+                    <div class="space-y-4 fade-in-up">
+                        <h1 class="text-5xl lg:text-7xl font-bold bg-gradient-text animate-pulse">
+                            Hello, I'm
+                        </h1>
+                        <h2 class="text-4xl lg:text-6xl font-bold text-gray-800 transform hover:scale-105 transition-transform duration-300">
+                            Manish Kumar Mandal
+                        </h2>
+                        <p class="text-xl lg:text-2xl text-gray-600">
+                            Aspiring Bio Medical Engineer
+                        </p>
+                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+                            <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                                Future Bio Medical Engineer
+                            </span>
+                            <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">
+                                Bio- Med Eng Student at SRMIST University, Trichy
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Motivational Quote -->
+                    <div class="mt-8 p-6 bg-gray-50 rounded-lg border-l-4 border-blue-500 shadow-lg lightning-effect">
+                        <blockquote class="text-lg italic text-gray-700 leading-relaxed">
+                            "The only way to do great work is to love what you do. Stay hungry, stay foolish."
+                        </blockquote>
+                        <cite class="text-sm text-blue-600 font-medium mt-2 block">- Steve Jobs</cite>
+                    </div>
+
+                    <div class="flex gap-4 justify-center lg:justify-start pt-4">
+                        <a href="Rohan_pdf.pdf" target="_blank" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                            View Resume
+                        </a>
+                        <button onclick="scrollToSection('contact')" class="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transform hover:scale-105 transition-all duration-300">
+                            Get in Touch
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Profile Image -->
+                <div class="flex-shrink-0">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-full blur opacity-75 group-hover:opacity-100 animate-pulse"></div>
+                        <div class="relative">
+                            <img
+                                src="manish.png"
+                                alt="Manish Mandal"
+                                class="w-80 h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl transform group-hover:scale-105 transition-all duration-500 float-animation"
+                            />
+                            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-transparent to-blue-500/30 group-hover:to-purple-500/30 transition-all duration-500"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="skills">
-      <div class="section-head">
-        <h2><i data-lucide="layers"></i> Technical Competencies</h2>
-        <p>Core laboratory instrumentation, hardware analysis, and computation skills.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3><i data-lucide="circuit-board"></i> Hardware & Instrumentation</h3>
-          <div class="tag-container">
-            <span class="tag">LM35 & LDR</span>
-            <span class="tag">Thermistors</span>
-            <span class="tag">Signal Conditioning</span>
-            <span class="tag">Active Filter Design</span>
-            <span class="tag">Op-Amp Comparators</span>
-            <span class="tag">Relay & Actuators</span>
-            <span class="tag">Breadboard Prototyping</span>
-          </div>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white relative overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-20 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl"></div>
         </div>
 
-        <div class="skill-card">
-          <h3><i data-lucide="terminal"></i> Computational Tools</h3>
-          <div class="tag-container">
-            <span class="tag">MATLAB</span>
-            <span class="tag">Numerical Curve Fitting</span>
-            <span class="tag">Symbolic Math Toolbox</span>
-            <span class="tag">Data Acquisition</span>
-            <span class="tag">Parametric Modeling</span>
-            <span class="tag">Circuit Verification</span>
-          </div>
-        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-text">
+                    About Me
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+            </div>
 
-        <div class="skill-card">
-          <h3><i data-lucide="activity"></i> Diagnostic Fundamentals</h3>
-          <div class="tag-container">
-            <span class="tag">EM Field Analysis</span>
-            <span class="tag">Transducer Principles</span>
-            <span class="tag">MRI/Ultrasound Basics</span>
-            <span class="tag">Device Calibration</span>
-            <span class="tag">Electrical Safety</span>
-          </div>
-        </div>
+            <div class="about-content flex flex-col lg:flex-row items-center gap-16">
+                <!-- Image Section (Left) -->
+                <div class="flex-shrink-0">
+                    <div class="relative group">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 blur"></div>
+                        <img
+                            src="profile-image.jpeg"
+                            alt="Manish Mandal- About"
+                            class="relative w-80 h-96 lg:w-96 lg:h-[28rem] object-cover rounded-3xl shadow-2xl transform group-hover:scale-105 transition-all duration-500"
+                        />
+                        <div class="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                </div>
 
-        <div class="skill-card">
-          <h3><i data-lucide="check-circle-2"></i> Operational Competencies</h3>
-          <div class="tag-container">
-            <span class="tag">Lab Protocols</span>
-            <span class="tag">Technical Documentation</span>
-            <span class="tag">Cross-Functional Logistics</span>
-            <span class="tag">Rapid Debugging</span>
-          </div>
+                <!-- Content Section (Right) -->
+                <div class="flex-1 space-y-8">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-gray-800">
+                            Passionate About Technology & Innovation
+                        </h3>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            I'm a passionate first-year Biomedical Engineering student at SRM University, Trichy, with a keen interest in the intersection of healthcare and technology. My academic journey has equipped me with a strong foundation in biology, physics, and engineering principles. I'm driven by the mission to develop innovative medical devices and solutions that improve patient outcomes and advance healthcare technology.
+                        </p>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            Currently a Biomedical Engineering student at SRMIST University, Trichy, with a passion for healthcare innovation and medical device development. I'm committed to advancing the field through continuous learning and practical projects that apply engineering principles to solve real-world medical challenges.
+                        </p>
+                    </div>
+
+                    <!-- Education Details -->
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 shadow-lg">
+                        <h4 class="text-xl font-bold mb-4 text-gray-800">Educational Background</h4>
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="font-semibold text-blue-600">Higher Secondary (+2)</span>
+                                <span class="text-gray-500">•</span>
+                                <span class="font-medium">Small Heaven Academy</span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                                    GPA: 2.55
+                                </span>
+                                <span>NEB Board</span>
+                                <span>Completed on 2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goals -->
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-bold text-gray-800">Current Goals</h4>
+                        <div class="grid gap-3">
+                            <div class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                                <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                                <span class="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                                    Learning emerging technologies in biomedical engineering sector
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                                <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                                <span class="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                                    Developing innovative biomedical solutions and medical devices
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                                <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                                <span class="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                                    Contributing to open-source projects
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                                <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                                <span class="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                                    Building a career in Biomedical Engineering.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="projects">
-      <div class="section-head">
-        <h2><i data-lucide="folder-git-2"></i> Featured Projects</h2>
-        <p>Applied analog circuit design, electromagnetic analysis, and automated feedback systems.</p>
-      </div>
-      <div class="projects-grid">
-        
-        <div class="project-card">
-          <div>
-            <span class="project-status status-completed">Completed</span>
-            <h3>Autonomous Optical Trigger Circuit for Diagnostic Lighting</h3>
-            <ul>
-              <li>Engineered an autonomous sensing circuit using cadmium-sulfide LDR transducers, BJT switching stages, and electromechanical relays to automate lumen-responsive load delivery.</li>
-              <li>Calibrated precision voltage-divider biasing thresholds to prevent false triggering from optical transients, maximizing duty cycles and power efficiency.</li>
-            </ul>
-          </div>
-          <div class="tag-container">
-            <span class="tag">LDR Transducers</span>
-            <span class="tag">BJT Switches</span>
-            <span class="tag">Relay Logic</span>
-          </div>
-        </div>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+        <!-- Background animations -->
+        <div class="absolute inset-0" id="skills-particles"></div>
 
-        <div class="project-card">
-          <div>
-            <span class="project-status status-completed">Completed</span>
-            <h3>Empirical Characterization of Electromagnetic Fields</h3>
-            <ul>
-              <li>Executed benchtop characterization of magnetic flux density and coil induction across ferromagnetic and air-core mediums to evaluate transducer performance parameters.</li>
-              <li>Synthesized empirical field data with theoretical induction models, identifying core hysteresis behavior critical to non-invasive diagnostic imaging sensors.</li>
-            </ul>
-          </div>
-          <div class="tag-container">
-            <span class="tag">Electromagnetics</span>
-            <span class="tag">Flux Density</span>
-            <span class="tag">Imaging Transducers</span>
-          </div>
-        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-text">
+                    Skills & Expertise
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+                <p class="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
+                    A combination of technical prowess and professional competencies that drive my passion for technology
+                </p>
+            </div>
 
-        <div class="project-card">
-          <div>
-            <span class="project-status status-progress">In Progress</span>
-            <h3>Closed-Loop Biomedical Thermal Management System</h3>
-            <ul>
-              <li>Prototyping an analog feedback temperature regulation unit incorporating an LM35 linear transducer (10 mV/°C) and op-amp comparators for incubator and enclosure monitoring.</li>
-              <li>Deriving dynamic voltage-to-temperature regression models using MATLAB Curve Fitting to calibrate reference thresholds and maintain actuator stabilization.</li>
-            </ul>
-          </div>
-          <div class="tag-container">
-            <span class="tag">LM35</span>
-            <span class="tag">Op-Amp Comparators</span>
-            <span class="tag">MATLAB Curve Fitting</span>
-          </div>
-        </div>
+            <div class="grid lg:grid-cols-2 gap-12 mb-16">
+                <!-- Technical Skills -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold text-center mb-8 text-gray-800">
+                        Technical Skills
+                    </h3>
+                    <div class="space-y-6" id="technical-skills">
+                        <!-- Skills will be populated by JavaScript -->
+                    </div>
+                </div>
 
-      </div>
+                <!-- Professional Skills -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold text-center mb-8 text-gray-800">
+                        Professional Skills
+                    </h3>
+                    <div class="grid gap-4" id="professional-skills">
+                        <!-- Skills will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Technologies -->
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-8 text-gray-800">
+                    Tools & Technologies
+                </h3>
+                <div class="flex flex-wrap justify-center gap-6" id="tools">
+                    <!-- Tools will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="experience">
-      <div class="split-grid">
-        <div>
-          <div class="section-head">
-            <h2><i data-lucide="graduation-cap"></i> Education</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">2025 – 2029 (EXPECTED)</div>
-              <h3>SRM Institute of Science and Technology</h3>
-              <div class="timeline-sub">B.Tech in Biomedical Engineering • CGPA: 8.02 / 10.0</div>
-              <p style="font-size: 0.85rem; color: var(--text-muted);">
-                Tiruchirapalli, India<br>
-                <em>Coursework:</em> Biomedical Instrumentation, Analog Electronics, Electromagnetics & Diagnostic Physics.
-              </p>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">COMPLETED</div>
-              <h3>D.A.V. R.B. Kedia Higher Secondary School</h3>
-              <div class="timeline-sub">Higher Secondary (Science - Physics, Chemistry, Math)</div>
-              <p style="font-size: 0.85rem; color: var(--text-muted);">Birgunj, Nepal • 59.8%</p>
-            </div>
-          </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute inset-0">
+            <div class="absolute top-10 right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl animate-pulse"></div>
+            <div class="absolute bottom-10 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl animate-pulse"></div>
         </div>
 
-        <div>
-          <div class="section-head">
-            <h2><i data-lucide="users"></i> Leadership</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">2024 – PRESENT</div>
-              <h3>Operations & Cultural Coordinator</h3>
-              <div class="timeline-sub">International Student Association, SRM IST</div>
-              <ul>
-                <li>Directed stage logistics and resource scheduling for assemblies hosting 500+ attendees with zero schedule overruns.</li>
-                <li>Liaised with university administration and vendor teams to align milestones with departmental safety standards.</li>
-              </ul>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-text">
+                    Let's Connect
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+                <p class="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
+                    I'm always excited to collaborate on interesting projects or discuss opportunities in tech
+                </p>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">VOLUNTEER</div>
-              <h3>Emergency Logistics Volunteer</h3>
-              <div class="timeline-sub">District Festival Operations, Birgunj, Nepal</div>
-              <ul>
-                <li>Facilitated pedestrian navigation corridors and prioritized egress routes for crowds exceeding 10,000 visitors.</li>
-              </ul>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Send a Message</h3>
+                        <form action="https://formspree.io/f/xeevrqnj" method="post" class="space-y-6">
+                            <div class="group">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Your Name"
+                                    required
+                                    class="w-full px-4 py-4 bg-white border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors duration-300 group-hover:border-blue-400"
+                                />
+                            </div>
+                            <div class="group">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Your Email"
+                                    required
+                                    class="w-full px-4 py-4 bg-white border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors duration-300 group-hover:border-blue-400"
+                                />
+                            </div>
+                            <div class="group">
+                                <textarea
+                                    name="message"
+                                    placeholder="Your Message"
+                                    rows="6"
+                                    required
+                                    class="w-full px-4 py-4 bg-white border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors duration-300 group-hover:border-blue-400 resize-none"
+                                ></textarea>
+                            </div>
+                            <button
+                                type="submit"
+                                class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl font-medium"
+                            >
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Get in Touch</h3>
+                        <div class="space-y-4">
+                            <a href="mailto:manishkmk321@gmail.com" class="group flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
+                                <div class="text-2xl group-hover:scale-125 transition-transform duration-300">📧</div>
+                                <div>
+                                    <div class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Email</div>
+                                    <div class="text-gray-600 text-sm">manishkmk321@gmail.com</div>
+                                </div>
+                            </a>
+                            <a href="tel:+91 8148446959" class="group flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
+                                <div class="text-2xl group-hover:scale-125 transition-transform duration-300">📱</div>
+                                <div>
+                                    <div class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Phone</div>
+                                    <div class="text-gray-600 text-sm">+977 9701177970</div>
+                                </div>
+                            </a>
+                            <div class="group flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
+                                <div class="text-2xl group-hover:scale-125 transition-transform duration-300">📍</div>
+                                <div>
+                                    <div class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Location</div>
+                                    <div class="text-gray-600 text-sm">Bhokraha,7-Sunsari, Nepal</div>
+                                </div>
+                            </div>
+                            <div class="group flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
+                                <div class="text-2xl group-hover:scale-125 transition-transform duration-300">🎓</div>
+                                <div>
+                                    <div class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">University</div>
+                                    <div class="text-gray-600 text-sm">SRMIST University, Trichy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-gray-800">Follow Me</h4>
+                        <div class="flex gap-4">
+                           
+                            <div class="flex gap-4">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/manish.mandal.338352" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-110 hover:text-blue-700">
+                        <i class="fab fa-facebook-f text-2xl group-hover:scale-125 transition-transform duration-300"></i>
+                            </a>
+
+                            <!-- GitHub -->
+                            <a href="https://github.com/manishkmk321-arch" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-110 hover:text-gray-800">
+                                <i class="fab fa-github text-2xl group-hover:scale-125 transition-transform duration-300"></i>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-110 hover:text-blue-600">
+                                <i class="fab fa-linkedin-in text-2xl group-hover:scale-125 transition-transform duration-300"></i>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/pm_ma_ni_sh02/" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-110 hover:text-pink-500">
+                                <i class="fab fa-instagram text-2xl group-hover:scale-125 transition-transform duration-300"></i>
+                            </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 shadow-lg">
+                        <h4 class="font-bold text-lg mb-3 text-gray-800">Ready to Collaborate?</h4>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Whether you're looking for a biomedical engineering collaborator, need help with healthcare technology projects, 
+                            or want to discuss opportunities in medical device development, I'd love to hear from you!
+                        </p>
+                        <div class="flex gap-3">
+                            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                            <span class="text-sm text-green-600 font-medium">
+                                Available for opportunities
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <section>
-      <div class="split-grid">
-        <div>
-          <div class="section-head">
-            <h2><i data-lucide="award"></i> Certifications</h2>
-          </div>
-          <div class="list-card">
-            <div class="list-item">
-              <i data-lucide="file-check"></i>
-              <div>
-                <div class="list-item-title">MathWorks: MATLAB Onramp</div>
-                <div class="list-item-sub">Numerical Computation & Simulation</div>
-              </div>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center space-y-4">
+                <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Manish Kumar Mandal
+                </div>
+                <p class="text-slate-400 max-w-md mx-auto">
+                    Biomedical Engineering student passionate about creating innovative healthcare solutions through technology
+                </p>
+                <div class="flex justify-center gap-6 pt-4">
+                    <a href="https://github.com/rohansah9819899995-debug" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors duration-300">
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/rohan-sah-103172403/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors duration-300">
+                        LinkedIn
+                    </a>
+                    <a href="mailto:manishkmk321@gmail.com" class="text-slate-400 hover:text-white transition-colors duration-300">
+                        Email
+                    </a>
+                </div>
+                <div class="border-t border-slate-700 pt-6 mt-6">
+                    <p class="text-slate-500 text-sm">
+                        © 2024 Manish Mandal. Built with HTML, CSS, JavaScript and lots of ☕
+                    </p>
+                </div>
             </div>
-            <div class="list-item">
-              <i data-lucide="file-check"></i>
-              <div>
-                <div class="list-item-title">MathWorks: Symbolic Math Onramp</div>
-                <div class="list-item-sub">Analytical & Mathematical Modeling</div>
-              </div>
-            </div>
-            <div class="list-item">
-              <i data-lucide="file-check"></i>
-              <div>
-                <div class="list-item-title">MathWorks: Curve Fitting Onramp</div>
-                <div class="list-item-sub">Parametric Regression & Signal Calibration</div>
-              </div>
-            </div>
-          </div>
         </div>
+    </footer>
 
-        <div>
-          <div class="section-head">
-            <h2><i data-lucide="languages"></i> Languages</h2>
-          </div>
-          <div class="list-card">
-            <div class="list-item">
-              <i data-lucide="message-square"></i>
-              <div>
-                <div class="list-item-title">English</div>
-                <div class="list-item-sub">Professional Working Proficiency</div>
-              </div>
-            </div>
-            <div class="list-item">
-              <i data-lucide="message-square"></i>
-              <div>
-                <div class="list-item-title">Nepali (Native) & Hindi (Fluent)</div>
-                <div class="list-item-sub">Bilingual Full Working Proficiency</div>
-              </div>
-            </div>
-            <div class="list-item">
-              <i data-lucide="message-square"></i>
-              <div>
-                <div class="list-item-title">Bhojpuri & Maithili</div>
-                <div class="list-item-sub">Native & Fluent Regional Competencies</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="contact-banner">
-        <h2>Let's Connect</h2>
-        <p>Currently seeking biomedical engineering internship opportunities in clinical instrumentation, device R&D, and biosensor prototyping.</p>
-        <div class="contact-links">
-          <a href="mailto:vs2207@srmist.edu.in" class="btn btn-primary">
-            <i data-lucide="mail"></i> vs2207@srmist.edu.in
-          </a>
-          <a href="tel:+9779807134155" class="btn btn-secondary">
-            <i data-lucide="phone"></i> +977 9807134155
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>© 2026 Vishant Sarraf • Biomedical Engineering Undergraduate</p>
-    </div>
-  </footer>
-
-  <script>
-    // Initialize Lucide icons
-    lucide.createIcons();
-
-    // Theme Switcher Logic
-    const toggleBtn = document.getElementById('themeToggle');
-    const htmlEl = document.documentElement;
-
-    toggleBtn.addEventListener('click', () => {
-      const isDark = htmlEl.getAttribute('data-theme') !== 'light';
-      htmlEl.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      toggleBtn.innerHTML = isDark ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
-      lucide.createIcons();
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
