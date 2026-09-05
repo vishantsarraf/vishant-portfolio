@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vishant Sarraf | Biomedical Engineering Portfolio</title>
+  <meta name="description" content="Portfolio of Vishant Sarraf - Biomedical Engineering Undergraduate specializing in Instrumentation, Analog Prototyping, and Computational Modeling." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-primary: #0a0f1d;
+      --bg-secondary: #111827;
+      --bg-card: #162032;
+      --bg-card-hover: #1e2c45;
+      --text-main: #f3f4f6;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --border: #223249;
+      --tag-bg: rgba(56, 189, 248, 0.1);
+      --tag-text: #38bdf8;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: #f1f5f9;
+      --bg-card-hover: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --accent: #0284c7;
+      --accent-glow: rgba(2, 132, 199, 0.12);
+      --border: #cbd5e1;
+      --tag-bg: rgba(2, 132, 199, 0.1);
+      --tag-text: #0284c7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-top: 70px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(10, 15, 29, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    [data-theme="light"] .navbar {
+      background: rgba(248, 250, 252, 0.85);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-badge .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
+      animation: pulse-ring 1.8s infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+      70% { box-shadow: 0 0 0 9px rgba(56, 189, 248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0f1d;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+    }
+
+    /* Section Styling */
+    section {
+      padding: 70px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-head {
+      margin-bottom: 40px;
+    }
+
+    .section-head h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-head h2 i {
+      color: var(--accent);
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      background: var(--bg-card-hover);
+    }
+
+    .skill-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px var(--accent-glow);
+    }
+
+    .project-status {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .status-completed { color: #34d399; }
+    .status-progress { color: #fbbf24; }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .project-card ul {
+      padding-left: 18px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 20px;
+    }
+
+    .project-card li {
+      margin-bottom: 8px;
+    }
+
+    /* Timeline (Education & Experience) */
+    .timeline {
+      position: relative;
+      border-left: 2px solid var(--border);
+      margin-left: 16px;
+      padding-left: 24px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -31px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg-primary);
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .timeline-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item ul {
+      padding-left: 18px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .timeline-item li {
+      margin-bottom: 6px;
+    }
+
+    /* Two Column Split */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    /* List Card */
+    .list-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .list-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .list-item:first-child {
+      padding-top: 0;
+    }
+
+    .list-item i {
+      color: var(--accent);
+    }
+
+    .list-item-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .list-item-sub {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Contact Banner */
+    .contact-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .contact-banner h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .contact-banner p {
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 24px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .split-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="nav-logo">VS<span>.bio</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <i data-lucide="moon" id="themeIcon"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <div class="hero-badge">
+        <span class="pulse"></span> Open to Biomedical Internships (Summer 2026)
+      </div>
+      <h1>Hi, I'm <span>Vishant Sarraf</span></h1>
+      <p>
+        Biomedical Engineering undergraduate at SRM IST focused on analog front-end prototyping, bio-transducer calibration, and physiological signal conditioning through MATLAB modeling.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <i data-lucide="cpu"></i> View Engineering Projects
+        </a>
+        <a href="mailto:vs2207@srmist.edu.in" class="btn btn-secondary">
+          <i data-lucide="mail"></i> Get In Touch
+        </a>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head">
+        <h2><i data-lucide="layers"></i> Technical Competencies</h2>
+        <p>Core laboratory instrumentation, hardware analysis, and computation skills.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3><i data-lucide="circuit-board"></i> Hardware & Instrumentation</h3>
+          <div class="tag-container">
+            <span class="tag">LM35 & LDR</span>
+            <span class="tag">Thermistors</span>
+            <span class="tag">Signal Conditioning</span>
+            <span class="tag">Active Filter Design</span>
+            <span class="tag">Op-Amp Comparators</span>
+            <span class="tag">Relay & Actuators</span>
+            <span class="tag">Breadboard Prototyping</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3><i data-lucide="terminal"></i> Computational Tools</h3>
+          <div class="tag-container">
+            <span class="tag">MATLAB</span>
+            <span class="tag">Numerical Curve Fitting</span>
+            <span class="tag">Symbolic Math Toolbox</span>
+            <span class="tag">Data Acquisition</span>
+            <span class="tag">Parametric Modeling</span>
+            <span class="tag">Circuit Verification</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3><i data-lucide="activity"></i> Diagnostic Fundamentals</h3>
+          <div class="tag-container">
+            <span class="tag">EM Field Analysis</span>
+            <span class="tag">Transducer Principles</span>
+            <span class="tag">MRI/Ultrasound Basics</span>
+            <span class="tag">Device Calibration</span>
+            <span class="tag">Electrical Safety</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3><i data-lucide="check-circle-2"></i> Operational Competencies</h3>
+          <div class="tag-container">
+            <span class="tag">Lab Protocols</span>
+            <span class="tag">Technical Documentation</span>
+            <span class="tag">Cross-Functional Logistics</span>
+            <span class="tag">Rapid Debugging</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <h2><i data-lucide="folder-git-2"></i> Featured Projects</h2>
+        <p>Applied analog circuit design, electromagnetic analysis, and automated feedback systems.</p>
+      </div>
+      <div class="projects-grid">
+        
+        <div class="project-card">
+          <div>
+            <span class="project-status status-completed">Completed</span>
+            <h3>Autonomous Optical Trigger Circuit for Diagnostic Lighting</h3>
+            <ul>
+              <li>Engineered an autonomous sensing circuit using cadmium-sulfide LDR transducers, BJT switching stages, and electromechanical relays to automate lumen-responsive load delivery.</li>
+              <li>Calibrated precision voltage-divider biasing thresholds to prevent false triggering from optical transients, maximizing duty cycles and power efficiency.</li>
+            </ul>
+          </div>
+          <div class="tag-container">
+            <span class="tag">LDR Transducers</span>
+            <span class="tag">BJT Switches</span>
+            <span class="tag">Relay Logic</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <span class="project-status status-completed">Completed</span>
+            <h3>Empirical Characterization of Electromagnetic Fields</h3>
+            <ul>
+              <li>Executed benchtop characterization of magnetic flux density and coil induction across ferromagnetic and air-core mediums to evaluate transducer performance parameters.</li>
+              <li>Synthesized empirical field data with theoretical induction models, identifying core hysteresis behavior critical to non-invasive diagnostic imaging sensors.</li>
+            </ul>
+          </div>
+          <div class="tag-container">
+            <span class="tag">Electromagnetics</span>
+            <span class="tag">Flux Density</span>
+            <span class="tag">Imaging Transducers</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <span class="project-status status-progress">In Progress</span>
+            <h3>Closed-Loop Biomedical Thermal Management System</h3>
+            <ul>
+              <li>Prototyping an analog feedback temperature regulation unit incorporating an LM35 linear transducer (10 mV/°C) and op-amp comparators for incubator and enclosure monitoring.</li>
+              <li>Deriving dynamic voltage-to-temperature regression models using MATLAB Curve Fitting to calibrate reference thresholds and maintain actuator stabilization.</li>
+            </ul>
+          </div>
+          <div class="tag-container">
+            <span class="tag">LM35</span>
+            <span class="tag">Op-Amp Comparators</span>
+            <span class="tag">MATLAB Curve Fitting</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="split-grid">
+        <div>
+          <div class="section-head">
+            <h2><i data-lucide="graduation-cap"></i> Education</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">2025 – 2029 (EXPECTED)</div>
+              <h3>SRM Institute of Science and Technology</h3>
+              <div class="timeline-sub">B.Tech in Biomedical Engineering • CGPA: 8.02 / 10.0</div>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">
+                Tiruchirapalli, India<br>
+                <em>Coursework:</em> Biomedical Instrumentation, Analog Electronics, Electromagnetics & Diagnostic Physics.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">COMPLETED</div>
+              <h3>D.A.V. R.B. Kedia Higher Secondary School</h3>
+              <div class="timeline-sub">Higher Secondary (Science - Physics, Chemistry, Math)</div>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Birgunj, Nepal • 59.8%</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-head">
+            <h2><i data-lucide="users"></i> Leadership</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">2024 – PRESENT</div>
+              <h3>Operations & Cultural Coordinator</h3>
+              <div class="timeline-sub">International Student Association, SRM IST</div>
+              <ul>
+                <li>Directed stage logistics and resource scheduling for assemblies hosting 500+ attendees with zero schedule overruns.</li>
+                <li>Liaised with university administration and vendor teams to align milestones with departmental safety standards.</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">VOLUNTEER</div>
+              <h3>Emergency Logistics Volunteer</h3>
+              <div class="timeline-sub">District Festival Operations, Birgunj, Nepal</div>
+              <ul>
+                <li>Facilitated pedestrian navigation corridors and prioritized egress routes for crowds exceeding 10,000 visitors.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="split-grid">
+        <div>
+          <div class="section-head">
+            <h2><i data-lucide="award"></i> Certifications</h2>
+          </div>
+          <div class="list-card">
+            <div class="list-item">
+              <i data-lucide="file-check"></i>
+              <div>
+                <div class="list-item-title">MathWorks: MATLAB Onramp</div>
+                <div class="list-item-sub">Numerical Computation & Simulation</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <i data-lucide="file-check"></i>
+              <div>
+                <div class="list-item-title">MathWorks: Symbolic Math Onramp</div>
+                <div class="list-item-sub">Analytical & Mathematical Modeling</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <i data-lucide="file-check"></i>
+              <div>
+                <div class="list-item-title">MathWorks: Curve Fitting Onramp</div>
+                <div class="list-item-sub">Parametric Regression & Signal Calibration</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-head">
+            <h2><i data-lucide="languages"></i> Languages</h2>
+          </div>
+          <div class="list-card">
+            <div class="list-item">
+              <i data-lucide="message-square"></i>
+              <div>
+                <div class="list-item-title">English</div>
+                <div class="list-item-sub">Professional Working Proficiency</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <i data-lucide="message-square"></i>
+              <div>
+                <div class="list-item-title">Nepali (Native) & Hindi (Fluent)</div>
+                <div class="list-item-sub">Bilingual Full Working Proficiency</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <i data-lucide="message-square"></i>
+              <div>
+                <div class="list-item-title">Bhojpuri & Maithili</div>
+                <div class="list-item-sub">Native & Fluent Regional Competencies</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-banner">
+        <h2>Let's Connect</h2>
+        <p>Currently seeking biomedical engineering internship opportunities in clinical instrumentation, device R&D, and biosensor prototyping.</p>
+        <div class="contact-links">
+          <a href="mailto:vs2207@srmist.edu.in" class="btn btn-primary">
+            <i data-lucide="mail"></i> vs2207@srmist.edu.in
+          </a>
+          <a href="tel:+9779807134155" class="btn btn-secondary">
+            <i data-lucide="phone"></i> +977 9807134155
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Vishant Sarraf • Biomedical Engineering Undergraduate</p>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Theme Switcher Logic
+    const toggleBtn = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = htmlEl.getAttribute('data-theme') !== 'light';
+      htmlEl.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      toggleBtn.innerHTML = isDark ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
