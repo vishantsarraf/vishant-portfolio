@@ -1,146 +1,269 @@
-:root {
-            --font-size: 14px;
-            --background: #ffffff;
-            --foreground: oklch(0.145 0 0);
-            --card: #ffffff;
-            --card-foreground: oklch(0.145 0 0);
-            --popover: oklch(1 0 0);
-            --popover-foreground: oklch(0.145 0 0);
-            --primary: #030213;
-            --primary-foreground: oklch(1 0 0);
-            --secondary: oklch(0.95 0.0058 264.53);
-            --secondary-foreground: #030213;
-            --muted: #ececf0;
-            --muted-foreground: #717182;
-            --accent: #e9ebef;
-            --accent-foreground: #030213;
-            --destructive: #d4183d;
-            --destructive-foreground: #ffffff;
-            --border: rgba(0, 0, 0, 0.1);
-            --input: transparent;
-            --input-background: #f3f3f5;
-            --switch-background: #cbced4;
-            --font-weight-medium: 500;
-            --font-weight-normal: 400;
-            --ring: oklch(0.708 0 0);
-            --radius: 0.625rem;
+// Smooth scrolling and navigation
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth' 
+            });
         }
 
-        .dark {
-            --background: oklch(0.145 0 0);
-            --foreground: oklch(0.985 0 0);
-            --card: oklch(0.145 0 0);
-            --card-foreground: oklch(0.985 0 0);
-            --popover: oklch(0.145 0 0);
-            --popover-foreground: oklch(0.985 0 0);
-            --primary: oklch(0.985 0 0);
-            --primary-foreground: oklch(0.205 0 0);
-            --secondary: oklch(0.269 0 0);
-            --secondary-foreground: oklch(0.985 0 0);
-            --muted: oklch(0.269 0 0);
-            --muted-foreground: oklch(0.708 0 0);
-            --accent: oklch(0.269 0 0);
-            --accent-foreground: oklch(0.985 0 0);
-            --destructive: oklch(0.396 0.141 25.723);
-            --destructive-foreground: oklch(0.637 0.237 25.331);
-            --border: oklch(0.269 0 0);
-            --input: oklch(0.269 0 0);
-            --ring: oklch(0.439 0 0);
-        }
-
-        html {
-            font-size: var(--font-size);
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--background);
-            color: var(--foreground);
-        }
-
-        /* Custom animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.8); }
-        }
-
-        @keyframes lightning {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .lightning-effect {
-            animation: lightning 3s ease-in-out infinite;
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .bg-gradient-text {
-            background: linear-gradient(to right, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .skill-bar {
-            transition: width 1.5s ease-in-out;
-        }
-
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(to right, #3b82f6, #8b5cf6);
-            border-radius: 2px;
-        }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: scale(1.05);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-content {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
+        // Navigation scroll handler
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const scrolled = window.scrollY > 50;
             
-            .about-content {
-                flex-direction: column;
-                text-align: center;
+            if (scrolled) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.backdropFilter = 'none';
+                navbar.style.borderBottom = 'none';
+            }
+
+            // Update active navigation link
+            const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                const navLink = document.querySelector(`[data-section="${section}"]`);
+                
+                if (element && navLink) {
+                    const { offsetTop, offsetHeight } = element;
+                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                        navLink.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Create background particles
+        function createParticles(containerId, count = 20) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'absolute w-2 h-2 bg-blue-500/20 rounded-full animate-pulse';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                particle.style.animationDuration = (2 + Math.random() * 3) + 's';
+                container.appendChild(particle);
             }
         }
+
+        // Initialize particles
+        createParticles('bg-particles');
+        createParticles('skills-particles', 15);
+// Skills data and initialization
+const technicalSkills = [
+    { name: 'C', level: 85, color: 'from-orange-500 to-red-500' },
+    { name: 'C++', level: 75, color: 'from-yellow-500 to-orange-500' },
+    { name: 'Python', level: 65, color: 'from-green-500 to-blue-500' },
+    { name: 'Web Design', level: 80, color: 'from-purple-500 to-pink-500' },
+    { name: 'Git/GitHub', level: 75, color: 'from-gray-600 to-gray-800' }
+];
+
+const professionalSkills = [
+    { name: 'Problem Solving', level: 90, icon: '🧩' },
+    { name: 'Team Collaboration', level: 85, icon: '🤝' },
+    { name: 'Communication', level: 95, icon: '💬' },
+    { name: 'Project Management', level: 85, icon: '📋' },
+    { name: 'Creative Thinking', level: 88, icon: '💡' },
+    { name: 'Leadership', level: 90, icon: '👑' }
+];
+
+const tools = [
+    { name: 'VS Code', icon: '💻' },
+    { name: 'Figma', icon: '🎨' },
+    { name: 'Photoshop', icon: '📸' },
+    { name: 'Chrome DevTools', icon: '🔧' }
+];
+
+// Populate technical skills with animation
+function initializeTechnicalSkills() {
+    const container = document.getElementById('technical-skills');
+    container.innerHTML = '';
+
+    technicalSkills.forEach((skill, index) => {
+        const skillDiv = document.createElement('div');
+        skillDiv.className = 'group mb-4';
+        skillDiv.innerHTML = `
+            <div class="flex justify-between items-center mb-2">
+                <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                    ${skill.name}
+                </span>
+                <span class="text-sm font-medium text-gray-600">
+                    ${skill.level}%
+                </span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                <div class="skill-bar h-full bg-gradient-to-r ${skill.color} rounded-full" 
+                     style="width: 0%; transition: width 1s ease; transition-delay: ${index * 200}ms;"></div>
+            </div>
+        `;
+        container.appendChild(skillDiv);
+
+        // Animate width after appending
+        const bar = skillDiv.querySelector('.skill-bar');
+        setTimeout(() => {
+            bar.style.width = skill.level + '%';
+        }, 50 + index * 200);
+    });
+}
+
+// Populate professional skills with animation
+function initializeProfessionalSkills() {
+    const container = document.getElementById('professional-skills');
+    container.innerHTML = '';
+
+    professionalSkills.forEach((skill, index) => {
+        const skillDiv = document.createElement('div');
+        skillDiv.className = 'group mb-6';
+        skillDiv.innerHTML = `
+            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-gray-100">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl group-hover:scale-125 transition-transform duration-300">
+                            ${skill.icon}
+                        </span>
+                        <span class="font-medium text-gray-800">
+                            ${skill.name}
+                        </span>
+                    </div>
+                    <span class="text-sm font-medium text-blue-600">
+                        ${skill.level}%
+                    </span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                    <div class="skill-bar h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" 
+                         style="width: 0%; transition: width 1s ease; transition-delay: ${index * 150}ms;"></div>
+                </div>
+            </div>
+        `;
+        container.appendChild(skillDiv);
+
+        // Animate width after appending
+        const bar = skillDiv.querySelector('.skill-bar');
+        setTimeout(() => {
+            bar.style.width = skill.level + '%';
+        }, 50 + index * 150);
+    });
+}
+
+// Call initialization functions on page load
+window.addEventListener('DOMContentLoaded', () => {
+    initializeTechnicalSkills();
+    initializeProfessionalSkills();
+});
+
+
+        // Populate tools
+        function initializeTools() {
+            const container = document.getElementById('tools');
+            container.innerHTML = '';
+
+            tools.forEach((tool, index) => {
+                const toolDiv = document.createElement('div');
+                toolDiv.className = 'group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 border border-gray-100';
+                toolDiv.style.animationDelay = `${index * 100}ms`;
+                toolDiv.innerHTML = `
+                    <div class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">
+                        ${tool.icon}
+                    </div>
+                    <div class="font-medium text-sm text-gray-800">
+                        ${tool.name}
+                    </div>
+                `;
+                container.appendChild(toolDiv);
+            });
+        }
+
+        // Skills intersection observer
+        function initializeSkillsObserver() {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Animate technical skills
+                            const technicalBars = document.querySelectorAll('#technical-skills .skill-bar');
+                            technicalBars.forEach((bar, index) => {
+                                setTimeout(() => {
+                                    bar.style.width = technicalSkills[index].level + '%';
+                                }, index * 200);
+                            });
+
+                            // Animate professional skills
+                            const professionalBars = document.querySelectorAll('#professional-skills .skill-bar');
+                            professionalBars.forEach((bar, index) => {
+                                setTimeout(() => {
+                                    bar.style.width = professionalSkills[index].level + '%';
+                                }, index * 150);
+                            });
+
+                            observer.disconnect();
+                        }
+                    });
+                },
+                { threshold: 0.3 }
+            );
+
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection) observer.observe(skillsSection);
+        }
+
+        // Contact form handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // Simple form validation
+            if (name && email && message) {
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                this.reset(); // Clear form
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        // Navigation click handlers
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('data-section');
+                scrollToSection(sectionId);
+            });
+        });
+
+        // Custom cursor effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursor = document.createElement('div');
+            cursor.className = 'fixed w-4 h-4 bg-blue-500/50 rounded-full pointer-events-none z-50 transition-transform duration-150';
+            cursor.style.display = 'none';
+            document.body.appendChild(cursor);
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.display = 'block';
+                cursor.style.left = e.clientX - 8 + 'px';
+                cursor.style.top = e.clientY - 8 + 'px';
+            });
+
+            document.addEventListener('mouseleave', () => {
+                cursor.style.display = 'none';
+            });
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTechnicalSkills();
+            initializeProfessionalSkills();
+            initializeTools();
+            initializeSkillsObserver();
+        });
